@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1><span class="glyphicon glyphicon-tent"></span>WELCOME TO YELPCAMP!</h1>
+            <P>View our hand-picked campgrounds from all over the world</P>
+            <form class="form-inline" action="/campgrounds" method="GET">
+                <div class="form-group has-feedback">
+                  <label for="search"></label>
+                  <input class="form-control" type="text" name="search" placeholder="Search campgrounds" autocomplete="off" />
+                  <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                </div>
+            </form>
+              <hr>
+              <a class="pull-right" href="/campgrounds/new">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Share New Campground
+              </a>
+            
+        </div>  
+    </header>
+
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% campgrounds.forEach(function(campground){ %>
+            <div class="col-md-3 col-sm-6">
+                 <div class="thumbnail">
+                         <img src="<%= campground.image %>">
+                        <div class="caption">
+                             <h4><%= campground.name %></h4>
+       
+                         </div>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+
+                    </div>
+    
+                </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
